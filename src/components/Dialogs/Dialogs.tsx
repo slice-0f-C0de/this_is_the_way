@@ -2,26 +2,40 @@ import React from "react";
 import c from "./Dialogs.module.css"
 import {NavLink} from "react-router-dom";
 
+export type DialogPropsType = {
+    id: string
+    name: string
+}
+
+const DialogItem = (props: DialogPropsType) => {
+
+    let path = "/dialogs/" + props.id // 1. Объявляем переменную в которую выносим наши данные
+
+    return <div className={c.dialog}>
+        <NavLink to={path}>{props.name}</NavLink> {/* 2. Вставляем переменную в путь */}
+    </div>
+}
+
 const Dialogs = () => {
     return <div className={c.dialogs}>
        <div className={c.dialogsItems}>
            <div className={c.dialog}>
-               <NavLink to="/dialogs/1">Daniil</NavLink>
+               <DialogItem id={"1"} name={"Daniil"}/> {/* 3. Используем компоненту с нашими данными */}
            </div>
            <div className={c.dialog}>
-               <NavLink to="/dialogs/2">Ksenia</NavLink>
+               <DialogItem id={"2"} name={"Ksenia"}/>
            </div>
            <div className={c.dialog}>
-               <NavLink to="/dialogs/3">Kirill</NavLink>
+               <DialogItem id={"3"} name={"Mom"}/>
            </div>
            <div className={c.dialog}>
-               <NavLink to="/dialogs/4">Ruslan</NavLink>
+               <DialogItem id={"4"} name={"Dad"}/>
            </div>
            <div className={c.dialog}>
-               <NavLink to="/dialogs/5">Mom</NavLink>
+               <DialogItem id={"5"} name={"Kirill"}/>
            </div>
            <div className={c.dialog}>
-               <NavLink to="/dialogs/6">Dad</NavLink>
+               <DialogItem id={"6"} name={"Ruslan"}/>
            </div>
        </div>
            <div className={c.messages}>
